@@ -13110,6 +13110,12 @@ static bool command_event_main_state(
       switch (cmd)
       {
          case CMD_EVENT_SAVE_STATE:
+         case CMD_EVENT_SAVE_STATE_SLOT_1:
+         case CMD_EVENT_SAVE_STATE_SLOT_2:
+         case CMD_EVENT_SAVE_STATE_SLOT_3:
+         case CMD_EVENT_SAVE_STATE_SLOT_4:
+         case CMD_EVENT_SAVE_STATE_SLOT_5:
+         case CMD_EVENT_SAVE_STATE_SLOT_6:
             {
                bool savestate_auto_index                      =
                      settings->bools.savestate_auto_index;
@@ -13136,6 +13142,12 @@ static bool command_event_main_state(
             }
             break;
          case CMD_EVENT_LOAD_STATE:
+         case CMD_EVENT_LOAD_STATE_SLOT_1:
+         case CMD_EVENT_LOAD_STATE_SLOT_2:
+         case CMD_EVENT_LOAD_STATE_SLOT_3:
+         case CMD_EVENT_LOAD_STATE_SLOT_4:
+         case CMD_EVENT_LOAD_STATE_SLOT_5:
+         case CMD_EVENT_LOAD_STATE_SLOT_6:
             if (content_load_state(state_path, false, false))
             {
 #ifdef HAVE_CHEEVOS
@@ -13675,6 +13687,9 @@ bool command_event(enum event_command cmd, void *data)
             break;
          }
       case CMD_EVENT_LOAD_STATE:
+      
+      LOADSTATE_EVT: ;
+      
 #ifdef HAVE_BSV_MOVIE
          /* Immutable - disallow savestate load when
           * we absolutely cannot change game state. */
@@ -13688,6 +13703,54 @@ bool command_event(enum event_command cmd, void *data)
 #endif
          if (!command_event_main_state(p_rarch, cmd))
             return false;
+         break;
+      case CMD_EVENT_LOAD_STATE_SLOT_1:
+         {
+            int new_state_slot = 0;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto LOADSTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_LOAD_STATE_SLOT_2:
+         {
+            int new_state_slot = 1;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto LOADSTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_LOAD_STATE_SLOT_3:
+         {
+            int new_state_slot = 2;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto LOADSTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_LOAD_STATE_SLOT_4:
+         {
+            int new_state_slot = 3;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto LOADSTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_LOAD_STATE_SLOT_5:
+         {
+            int new_state_slot = 4;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto LOADSTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_LOAD_STATE_SLOT_6:
+         {
+            int new_state_slot = 5;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto LOADSTATE_EVT;
+         }
          break;
       case CMD_EVENT_UNDO_LOAD_STATE:
          if (!command_event_main_state(p_rarch, cmd))
@@ -13727,6 +13790,8 @@ bool command_event(enum event_command cmd, void *data)
          return false;
       case CMD_EVENT_SAVE_STATE:
          {
+            SAVESTATE_EVT: ;
+             
             bool savestate_auto_index = settings->bools.savestate_auto_index;
             int state_slot            = settings->ints.state_slot;
 
@@ -13755,6 +13820,54 @@ bool command_event(enum event_command cmd, void *data)
          {
             int new_state_slot        = settings->ints.state_slot + 1;
             configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+         }
+         break;
+      case CMD_EVENT_SAVE_STATE_SLOT_1:
+         {
+            int new_state_slot = 0;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto SAVESTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_SAVE_STATE_SLOT_2:
+         {
+            int new_state_slot = 1;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto SAVESTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_SAVE_STATE_SLOT_3:
+         {
+            int new_state_slot = 2;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto SAVESTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_SAVE_STATE_SLOT_4:
+         {
+            int new_state_slot = 3;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto SAVESTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_SAVE_STATE_SLOT_5:
+         {
+            int new_state_slot = 4;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto SAVESTATE_EVT;
+         }
+         break;
+      case CMD_EVENT_SAVE_STATE_SLOT_6:
+         {
+            int new_state_slot = 5;
+            configuration_set_int(settings, settings->ints.state_slot, new_state_slot);
+
+            goto SAVESTATE_EVT;
          }
          break;
       case CMD_EVENT_TAKE_SCREENSHOT:
@@ -38281,6 +38394,20 @@ static enum runloop_state runloop_check_state(
    /* Check if we have pressed any of the savestate buttons */
    HOTKEY_CHECK(RARCH_SAVE_STATE_KEY, CMD_EVENT_SAVE_STATE, true, NULL);
    HOTKEY_CHECK(RARCH_LOAD_STATE_KEY, CMD_EVENT_LOAD_STATE, true, NULL);
+   
+   HOTKEY_CHECK(RARCH_SAVE_STATE_1_KEY, CMD_EVENT_SAVE_STATE_SLOT_1, true, NULL);
+   HOTKEY_CHECK(RARCH_SAVE_STATE_2_KEY, CMD_EVENT_SAVE_STATE_SLOT_2, true, NULL);
+   HOTKEY_CHECK(RARCH_SAVE_STATE_3_KEY, CMD_EVENT_SAVE_STATE_SLOT_3, true, NULL);
+   HOTKEY_CHECK(RARCH_SAVE_STATE_4_KEY, CMD_EVENT_SAVE_STATE_SLOT_4, true, NULL);
+   HOTKEY_CHECK(RARCH_SAVE_STATE_5_KEY, CMD_EVENT_SAVE_STATE_SLOT_5, true, NULL);
+   HOTKEY_CHECK(RARCH_SAVE_STATE_6_KEY, CMD_EVENT_SAVE_STATE_SLOT_6, true, NULL);
+
+   HOTKEY_CHECK(RARCH_LOAD_STATE_1_KEY, CMD_EVENT_LOAD_STATE_SLOT_1, true, NULL);
+   HOTKEY_CHECK(RARCH_LOAD_STATE_2_KEY, CMD_EVENT_LOAD_STATE_SLOT_2, true, NULL);
+   HOTKEY_CHECK(RARCH_LOAD_STATE_3_KEY, CMD_EVENT_LOAD_STATE_SLOT_3, true, NULL);
+   HOTKEY_CHECK(RARCH_LOAD_STATE_4_KEY, CMD_EVENT_LOAD_STATE_SLOT_4, true, NULL);
+   HOTKEY_CHECK(RARCH_LOAD_STATE_5_KEY, CMD_EVENT_LOAD_STATE_SLOT_5, true, NULL);
+   HOTKEY_CHECK(RARCH_LOAD_STATE_6_KEY, CMD_EVENT_LOAD_STATE_SLOT_6, true, NULL);
 
 #ifdef HAVE_CHEEVOS
    if (!cheevos_hardcore_active)

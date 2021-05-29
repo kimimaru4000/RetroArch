@@ -246,6 +246,18 @@ DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_slowmotion_key,        ME
 DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_slowmotion_hold_key,   MENU_ENUM_SUBLABEL_INPUT_META_SLOWMOTION_HOLD_KEY)
 DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_load_state_key,        MENU_ENUM_SUBLABEL_INPUT_META_LOAD_STATE_KEY)
 DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_save_state_key,        MENU_ENUM_SUBLABEL_INPUT_META_SAVE_STATE_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_save_state_1_key,      MENU_ENUM_SUBLABEL_INPUT_META_SAVE_STATE_1_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_save_state_2_key,      MENU_ENUM_SUBLABEL_INPUT_META_SAVE_STATE_2_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_save_state_3_key,      MENU_ENUM_SUBLABEL_INPUT_META_SAVE_STATE_3_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_save_state_4_key,      MENU_ENUM_SUBLABEL_INPUT_META_SAVE_STATE_4_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_save_state_5_key,      MENU_ENUM_SUBLABEL_INPUT_META_SAVE_STATE_5_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_save_state_6_key,      MENU_ENUM_SUBLABEL_INPUT_META_SAVE_STATE_6_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_load_state_1_key,      MENU_ENUM_SUBLABEL_INPUT_META_LOAD_STATE_1_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_load_state_2_key,      MENU_ENUM_SUBLABEL_INPUT_META_LOAD_STATE_2_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_load_state_3_key,      MENU_ENUM_SUBLABEL_INPUT_META_LOAD_STATE_3_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_load_state_4_key,      MENU_ENUM_SUBLABEL_INPUT_META_LOAD_STATE_4_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_load_state_5_key,      MENU_ENUM_SUBLABEL_INPUT_META_LOAD_STATE_5_KEY)
+DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_load_state_6_key,      MENU_ENUM_SUBLABEL_INPUT_META_LOAD_STATE_6_KEY)
 DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_fullscreen_toggle_key, MENU_ENUM_SUBLABEL_INPUT_META_FULLSCREEN_TOGGLE_KEY)
 DEFAULT_SUBLABEL_MACRO(action_bind_sublabel_input_meta_close_content_key,     MENU_ENUM_SUBLABEL_INPUT_META_CLOSE_CONTENT_KEY)
 #ifdef HAVE_LAKKA
@@ -1666,8 +1678,44 @@ int menu_cbs_init_bind_sublabel(menu_file_list_cbs_t *cbs,
             case RARCH_LOAD_STATE_KEY:
                BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_load_state_key);
                return 0;
+            case RARCH_LOAD_STATE_1_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_load_state_1_key);
+               return 0;
+            case RARCH_LOAD_STATE_2_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_load_state_2_key);
+               return 0;
+            case RARCH_LOAD_STATE_3_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_load_state_3_key);
+               return 0;
+            case RARCH_LOAD_STATE_4_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_load_state_4_key);
+               return 0;
+            case RARCH_LOAD_STATE_5_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_load_state_5_key);
+               return 0;
+            case RARCH_LOAD_STATE_6_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_load_state_6_key);
+               return 0;
             case RARCH_SAVE_STATE_KEY:
                BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_save_state_key);
+               return 0;
+            case RARCH_SAVE_STATE_1_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_save_state_1_key);
+               return 0;
+            case RARCH_SAVE_STATE_2_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_save_state_2_key);
+               return 0;
+            case RARCH_SAVE_STATE_3_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_save_state_3_key);
+               return 0;
+            case RARCH_SAVE_STATE_4_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_save_state_4_key);
+               return 0;
+            case RARCH_SAVE_STATE_5_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_save_state_5_key);
+               return 0;
+            case RARCH_SAVE_STATE_6_KEY:
+               BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_save_state_6_key);
                return 0;
             case RARCH_FULLSCREEN_TOGGLE_KEY:
                BIND_ACTION_SUBLABEL(cbs, action_bind_sublabel_input_meta_fullscreen_toggle_key);
